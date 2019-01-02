@@ -27,7 +27,8 @@ def clean_str(s):
 	s = re.sub(r"\s{2,}", " ", s)
 	s = re.sub(r'\S*(x{2,}|X{2,})\S*', "xxx", s)
 	s = re.sub(r'[^\x00-\x7F]+', "", s)
-	s = re.sub(r"'", " ", s)
+	s = re.sub(r"\'", " ", s)
+	s = re.sub(r"\\", " ", s)
 	return s.strip().lower()
 
 """
