@@ -29,7 +29,7 @@ def train_cnn():
 	"""Step 1: pad each sentence to the same length and map each word to an id"""
 	max_document_length = max([len(x.split(' ')) for x in x_raw])
 	#test
-	print (max_document_length)
+	#print (max_document_length)
 	logging.info('The maximum length of all sentences: {}'.format(max_document_length))
 	vocab_processor = learn.preprocessing.VocabularyProcessor(max_document_length)
 	#test
@@ -102,7 +102,7 @@ def train_cnn():
 			#print (checkpoint_prefix)
 			if not os.path.exists(checkpoint_dir):
 				os.makedirs(checkpoint_dir)
-			saver = tf.train.Saver()
+			saver = tf.train.Saver(max_to_keep=None)
 
 			# One training step: train the model with one batch
 			def train_step(x_batch, y_batch):

@@ -78,3 +78,5 @@ class TextCNN(object):
 		with tf.name_scope('num_correct'):
 			correct_predictions = tf.equal(self.predictions, tf.argmax(self.input_y, 1))
 			self.num_correct = tf.reduce_sum(tf.cast(correct_predictions, 'float'), name='num_correct')
+
+
