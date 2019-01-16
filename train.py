@@ -16,45 +16,67 @@ def train_cnn():
 	"""Step 0: load sentences, labels, and training parameters"""
 	train_file = sys.argv[1]
 	#test
+	#print ("train_file: \n")
 	#print (train_file)
 	x_raw, y_raw, df, labels = data_helper.load_data_and_labels(train_file)
-
-	parameter_file = sys.argv[2]
 	#test
+	#print ("x_raw: \n")
+	#print (x_raw)
+	#print ("y_raw: \n")
+	#print (y_raw)
+	#print ("df \n")
+	#print (df)
+	#print ("labels :\n")
+	#print (labels)
+	parameter_file = sys.argv[2]
+	#print ("parameter_file \n")
 	#print (parameter_file)
+
 	params = json.loads(open(parameter_file).read())
 	#test
+	#print ("params")
 	#print (params)
 
 	"""Step 1: pad each sentence to the same length and map each word to an id"""
 	max_document_length = max([len(x.split(' ')) for x in x_raw])
 	#test
+	#print ("max_document_length \n")
 	#print (max_document_length)
 	logging.info('The maximum length of all sentences: {}'.format(max_document_length))
 	vocab_processor = learn.preprocessing.VocabularyProcessor(max_document_length)
-	#test
+	#print ("vocab_processo \n")
 	#print (vocab_processor)
 	x = np.array(list(vocab_processor.fit_transform(x_raw)))
-	#test
+	#print ("x \n")
 	#print (x)
 	y = np.array(y_raw)
-	#test
+	#print ("y \n")
 	#print (y)
 
 	"""Step 2: split the original dataset into train and test sets"""
 	x_, x_test, y_, y_test = train_test_split(x, y, test_size=0.1, random_state=42)
+	#test
+	#print ("x_ \n")
+	#print (x_)
+	#print ("x_test \n")
+	#print (x_test)
 
 	"""Step 3: shuffle the train set and split the train set into train and dev sets"""
 	shuffle_indices = np.random.permutation(np.arange(len(y_)))
 	#test
-	#print (shuffled_indices)
+	#print ("shuffle_indices \n")
+	#print (shuffle_indices)
 	x_shuffled = x_[shuffle_indices]
-	#test
-	#print (x_shuffled)
 	y_shuffled = y_[shuffle_indices]
-	#test
+	#print ("x_shuffled \n")
+	#print (x_shuffled)
+	#print ("y_shuffled \n")
 	#print (y_shuffled)
 	x_train, x_dev, y_train, y_dev = train_test_split(x_shuffled, y_shuffled, test_size=0.1)
+	#print ("x_train \n")
+	#print (x_train)
+	#print ("x_dev")
+	#print (x_dev)
 
 	"""Step 4: save the labels into labels.json since predict.py needs it"""
 	with open('./labels.json', 'w') as outfile:
@@ -77,32 +99,21 @@ def train_cnn():
 				filter_sizes=list(map(int, params['filter_sizes'].split(","))),
 				num_filters=params['num_filters'],
 				l2_reg_lambda=params['l2_reg_lambda'])
-
+			
+			"""define training procedure"""
 			global_step = tf.Variable(0, name="global_step", trainable=False)
-			#test
-			#print (global_step)
 			optimizer = tf.train.AdamOptimizer(1e-3)
-			#test
-			#print (optimizer)
 			grads_and_vars = optimizer.compute_gradients(cnn.loss)
-			#test
-			#print (grads_and_vars)
 			train_op = optimizer.apply_gradients(grads_and_vars, global_step=global_step)
-			#test
-			#print (train_op)
 
+			"""output directories for model"""
 			timestamp = str(int(time.time()))
 			out_dir = os.path.abspath(os.path.join(os.path.curdir, "trained_model_" + timestamp))
-
 			checkpoint_dir = os.path.abspath(os.path.join(out_dir, "checkpoints"))
-			#test
-			#print (checkpoint_dir)
 			checkpoint_prefix = os.path.join(checkpoint_dir, "model")
-			#test
-			#print (checkpoint_prefix)
 			if not os.path.exists(checkpoint_dir):
 				os.makedirs(checkpoint_dir)
-			saver = tf.train.Saver(max_to_keep=None)
+			saver = tf.train.Saver()
 
 			# One training step: train the model with one batch
 			def train_step(x_batch, y_batch):
@@ -129,7 +140,7 @@ def train_cnn():
 			best_accuracy, best_at_step = 0, 0
 
 			"""Step 6: train the cnn model with x_train and y_train (batch by batch)"""
-			path = ""
+			path = saver.save(sess, checkpoint_prefix)
 			for train_batch in train_batches:
 				x_train_batch, y_train_batch = zip(*train_batch)
 				train_step(x_train_batch, y_train_batch)
@@ -154,8 +165,6 @@ def train_cnn():
 						best_accuracy, best_at_step = dev_accuracy, current_step
 						#harus diinisialisasi terlebih dahulu sebelum di-assign di dalam if.
 						path = saver.save(sess, checkpoint_prefix, global_step=current_step)
-						#test
-						#print (path)
 						logging.critical('Saved model at {} at step {}'.format(path, best_at_step))
 						logging.critical('Best accuracy is {} at step {}'.format(best_accuracy, best_at_step))
 

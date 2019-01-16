@@ -50,6 +50,8 @@ def predict_unseen_data():
 		sess = tf.Session(config=session_conf)
 
 		with sess.as_default():
+			#error
+			#OSError: File None.meta does not exist.
 			saver = tf.train.import_meta_graph("{}.meta".format(checkpoint_file))
 			saver.restore(sess, checkpoint_file)
 
