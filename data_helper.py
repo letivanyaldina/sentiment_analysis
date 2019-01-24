@@ -52,6 +52,10 @@ def load_data_and_labels(filename):
 	df = df.reindex(np.random.permutation(df.index))
 	"""drop rows other than 0, 1, 2"""
 	df = df[df.final_sentiment != -1]
+	#test
+	#print (df)
+	#df = df[df.final_sentiment == 1]
+	#df = df[df.final_sentiment == 2]
 	
 	
 	labels = sorted(list(set(df[selected[0]].tolist())))
