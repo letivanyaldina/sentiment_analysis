@@ -46,9 +46,13 @@ def load_data_and_labels(filename):
 	non_selected = list(set(df.columns) - set(selected))
 
 	
+	"""drop columns other than final_sentiment and content"""
 	df = df.drop(non_selected, axis=1)
 	df = df.dropna(axis=0, how='any', subset=selected)
 	df = df.reindex(np.random.permutation(df.index))
+	"""drop rows other than 0, 1, 2"""
+	df = df[df.final_sentiment != -1]
+	
 	
 	labels = sorted(list(set(df[selected[0]].tolist())))
 	one_hot = np.zeros((len(labels), len(labels)), int)
