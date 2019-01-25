@@ -74,7 +74,7 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	df_neg = df_neg.reindex(np.random.permutation(df_neg.index))
 	#drop rows
 	df_neg = df_neg[df_neg.final_sentiment != -1]
-	print (df_neg)
+	
 
 	"""neutral data processing"""
 	df_neu = neutral_examples
@@ -90,7 +90,6 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	
 	df = pd.concat([df_pos, df_neg, df_neu])
 	selected = ['final_sentiment', 'content']
-	print (df)
 	
 	labels = sorted(list(set(df[selected[0]].tolist())))
 	one_hot = np.zeros((len(labels), len(labels)), int)
