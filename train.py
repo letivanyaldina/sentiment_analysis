@@ -14,11 +14,13 @@ logging.getLogger().setLevel(logging.INFO)
 
 def train_cnn():
 	"""Step 0: load sentences, labels, and training parameters"""
-	train_file = sys.argv[1]
+	pos_trainfile = sys.argv[1]
+	neg_trainfile = sys.argv[2]
+	neu_trainfile = sys.argv[3]
 	#test
 	#print ("train_file: \n")
 	#print (train_file)
-	x_raw, y_raw, df, labels = data_helper.load_data_and_labels(train_file)
+	x_raw, y_raw, df, labels = data_helper.load_data_and_labels(pos_trainfile, neg_trainfile, neu_trainfile)
 	#test
 	#print ("x_raw: \n")
 	#print (x_raw)
@@ -28,7 +30,7 @@ def train_cnn():
 	#print (df)
 	#print ("labels :\n")
 	#print (labels)
-	parameter_file = sys.argv[2]
+	parameter_file = sys.argv[4]
 	#print ("parameter_file \n")
 	#print (parameter_file)
 

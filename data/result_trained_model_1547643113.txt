@@ -1,0 +1,102 @@
+[
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Nah yang begini nih yang cocok buat anak muda jaman now..\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Kasih mesin 2000cc dulu baru ngomong adventure \ud83e\udd23\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Ngk takut lagi nih kalo mau jalan\" medan yg berat\ud83d\ude0e\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Merahnya elegan. Pas nih buat hang out bareng temen\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Mantap N Keren..\n"
+    },
+    {
+        "final_sentiment": -1,
+        "new_prediction": 2,
+        "content": "'Wah\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Pas bgt nih Datsun Cross untuk yg punya jiwa petualang\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Datsun for me the one and only\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Datsun cross cocok buat adventure nih\n"
+    },
+    {
+        "final_sentiment": -1,
+        "new_prediction": 2,
+        "content": "'Jangan batasi eksplorasi Anda bersama Datsun CROSS. Dibekali dengan peredam yang cepat merespon setiap goncangan\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Mantapp. Keren banget Datsun.\n"
+    },
+    {
+        "final_sentiment": -1,
+        "new_prediction": 2,
+        "content": "'Cool Warnanya merah\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Ready min! Siap berangkat dengan All New Datsun Go\ud83d\ude0e\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Dengerin musik biar gag bosen dan ngantuk di jalan min\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Nunggu punya kunci sendiri min \ufffd?\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'_DATSUN PUSAT_ ( JABODETABEK )    0888 1350 778      ( Call / Wa )\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Mantap N Keren..\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'@Regran_ed from @familyofxtrailindonesia -  Road to anniversary.. #budidalton #anniversary #foxi #familyofxtrailindonesia #xtrail #xtrailclub #charity #nissanxtrail #nissanindonesia #club #automotif #video  @foxitasikmalaya  @foxi_padang @budi_dalton_official - #FK3O\n"
+    },
+    {
+        "final_sentiment": 2,
+        "new_prediction": 2,
+        "content": "'Fast Sale ! Used Cars Nissan Fairlady 350Z A/T cabriolet buildUp japan tahun: 2005 HANYA ADA 5 UNIT DI INDONESIA!! RARE!!! KM asli: 26.xxx mobil full original  plat : BM 350 ZZ  spek modif mesin : Knalpot: HKS (36jt) openfilter: HKS (8jt) Dastek Q+ \n"
+    },
+    {
+        "final_sentiment": -1,
+        "new_prediction": 2,
+        "content": "'#toyota #honda #subaru #mazda #nissan #Mitshubishi #ford #dahaitsu #suzuki #chivrolet #audi #ferrari #bmw #mercedes #hondaindonesia #jaguar #anaksmahits #anaksmaid  #anakhitskekinian #toyotaindonesia #modifikasicantik #modifikasi_cantik #modifikasi_kejam #nissanindonesia #otomotifindonesia #otomotifzone #otomotif #volkswagenindonesia #volkswagen #isuzu\n"
+    }
+]
