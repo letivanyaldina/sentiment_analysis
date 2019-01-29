@@ -5,6 +5,7 @@ import logging
 import numpy as np
 import pandas as pd
 from collections import Counter
+from nltk.corpus import stopwords
 
 def clean_str(s):
 	"""
@@ -50,6 +51,9 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	#1. pilih kolom final_sentiment & content
 	#2. drop kolom yg lain
 	#3. baru gabungkan df masing2
+
+	"""process raw data using stopwords"""
+	stop = stopwords.words("indonesian")
 	
 	"""positive data processing"""
 	df_pos = positive_examples
@@ -61,6 +65,8 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	df_pos = df_pos.reindex(np.random.permutation(df_pos.index))
 	#drop rows
 	df_pos = df_pos[df_pos.final_sentiment != -1]
+	#process stopwords
+	df_pos['content'].apply(lambda x:[item for item in x if item not in stop])
 
 
 	"""negative data processing"""
@@ -74,6 +80,8 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	df_neg = df_neg.reindex(np.random.permutation(df_neg.index))
 	#drop rows
 	df_neg = df_neg[df_neg.final_sentiment != -1]
+	#process stopwords
+	df_neg['content'].apply(lambda x:[item for item in x if item not in stop])
 	
 
 	"""neutral data processing"""
@@ -86,6 +94,8 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	df_neu = df_neu.reindex(np.random.permutation(df_neu.index))
 	#drop rows
 	df_neu = df_neu[df_neu.final_sentiment != -1]
+	#process stopwords
+	df_neu['content'].apply(lambda x:[item for item in x if item not in stop])
 	
 	
 	df = pd.concat([df_pos, df_neg, df_neu])

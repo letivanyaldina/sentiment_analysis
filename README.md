@@ -6,3 +6,7 @@
 
 # trained_model_1548420603, accuracy : 0.5
 
+# trained_model_1548765213, accuracy : 0.4
+
+
+
