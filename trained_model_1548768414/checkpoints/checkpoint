@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/letivany/sentiment_analysis/trained_model_1548768414/checkpoints/model"
+all_model_checkpoint_paths: "/home/letivany/sentiment_analysis/trained_model_1548768414/checkpoints/model"
