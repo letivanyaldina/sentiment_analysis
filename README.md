@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<<<<<<< Implementasi engine Tensorflow & Keras untuk sentiment analysis pada media sosial
 =======
 command for training data :
 
