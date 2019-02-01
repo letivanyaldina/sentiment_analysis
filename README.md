@@ -1,10 +1,10 @@
-# sentiment_analysis
+command for training data :
 
-# trained_model_1547636239, accuracy : 0.8
+python3 ./train.py ./data/positive.csv.zip ./data/negative.csv.zip ./data/neutral.csv.zip ./parameters.json
 
-# trained_model_1548420603, accuracy : 0.5
+command for predicting data :
 
-# trained_model_1548841707, accuracy : 0.4166666666666667
+python3 predict.py ./trained_model_1549020657/ ./data/small_samples.json
 
 
 
