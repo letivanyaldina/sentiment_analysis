@@ -32,25 +32,11 @@ def clean_str(s):
 	s = re.sub(r"\\", " ", s)
 	return s.strip().lower()
 
-"""
-string_try = clean_str("'1364734936996607_1365466750256759,01/11/2018 22:24,'social_media,'facebook,'comment,'account,Datsun.indonesia ,,,,'Nah yang begini nih yang cocok buat anak muda jaman now..,2,'https://graph.facebook.com//picture,[],'https://facebook.com/1364734936996607_1365466750256759,,'275216562615122_1364734936996607,'275216562615122,,,[],0,0,0,0,,,,[],0,,,,,")
-
-print(string_try)
-
-"""
-
 def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 
-	#df = pd.read_csv(filename, compression='zip', dtype={'content':object})
 	positive_examples = pd.read_csv(pos_filename, compression='zip', dtype={'content':object})
 	negative_examples = pd.read_csv(neg_filename, compression='zip', dtype={'content':object})
 	neutral_examples = pd.read_csv(neu_filename, compression='zip', dtype={'content':object})
-	
-	
-	#proses satu2 untuk masing2 pos, neg, neu
-	#1. pilih kolom final_sentiment & content
-	#2. drop kolom yg lain
-	#3. baru gabungkan df masing2
 
 	"""process raw data using stopwords"""
 	stop = stopwords.words("indonesian")
@@ -111,14 +97,6 @@ def load_data_and_labels(pos_filename, neg_filename, neu_filename):
 	return x_raw, y_raw, df, labels
 
 
-"""
-filename = load_data_and_labels('data_nissan.csv.zip')
-
-print(filename)
-"""
-
-
-
 
 def batch_iter(data, batch_size, num_epochs, shuffle=True):
 	data = np.array(data)
@@ -142,7 +120,6 @@ def batch_iter(data, batch_size, num_epochs, shuffle=True):
 
 
 if __name__ == '__main__':
-	#input_file = 'data_nissan.csv.zip'
 	pos_filename = 'positive.csv.zip'
 	neg_filename = 'negative.csv.zip'
 	neu_filename = 'neutral.csv.zip'

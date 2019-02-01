@@ -17,68 +17,27 @@ def train_cnn():
 	pos_trainfile = sys.argv[1]
 	neg_trainfile = sys.argv[2]
 	neu_trainfile = sys.argv[3]
-	#test
-	#print ("train_file: \n")
-	#print (train_file)
+	
 	x_raw, y_raw, df, labels = data_helper.load_data_and_labels(pos_trainfile, neg_trainfile, neu_trainfile)
-	#test
-	#print ("x_raw: \n")
-	#print (x_raw)
-	#print ("y_raw: \n")
-	#print (y_raw)
-	#print ("df \n")
-	#print (df)
-	#print ("labels :\n")
-	#print (labels)
-	parameter_file = sys.argv[4]
-	#print ("parameter_file \n")
-	#print (parameter_file)
 
+	parameter_file = sys.argv[4]
 	params = json.loads(open(parameter_file).read())
-	#test
-	#print ("params")
-	#print (params)
 
 	"""Step 1: pad each sentence to the same length and map each word to an id"""
 	max_document_length = max([len(x.split(' ')) for x in x_raw])
-	#test
-	#print ("max_document_length \n")
-	#print (max_document_length)
 	logging.info('The maximum length of all sentences: {}'.format(max_document_length))
 	vocab_processor = learn.preprocessing.VocabularyProcessor(max_document_length)
-	#print ("vocab_processo \n")
-	#print (vocab_processor)
 	x = np.array(list(vocab_processor.fit_transform(x_raw)))
-	#print ("x \n")
-	#print (x)
 	y = np.array(y_raw)
-	#print ("y \n")
-	#print (y)
 
 	"""Step 2: split the original dataset into train and test sets"""
 	x_, x_test, y_, y_test = train_test_split(x, y, test_size=0.1, random_state=42)
-	#test
-	#print ("x_ \n")
-	#print (x_)
-	#print ("x_test \n")
-	#print (x_test)
 
 	"""Step 3: shuffle the train set and split the train set into train and dev sets"""
 	shuffle_indices = np.random.permutation(np.arange(len(y_)))
-	#test
-	#print ("shuffle_indices \n")
-	#print (shuffle_indices)
 	x_shuffled = x_[shuffle_indices]
 	y_shuffled = y_[shuffle_indices]
-	#print ("x_shuffled \n")
-	#print (x_shuffled)
-	#print ("y_shuffled \n")
-	#print (y_shuffled)
 	x_train, x_dev, y_train, y_dev = train_test_split(x_shuffled, y_shuffled, test_size=0.1)
-	#print ("x_train \n")
-	#print (x_train)
-	#print ("x_dev")
-	#print (x_dev)
 
 	"""Step 4: save the labels into labels.json since predict.py needs it"""
 	with open('./labels.json', 'w') as outfile:
@@ -137,8 +96,6 @@ def train_cnn():
 
 			# Training starts here
 			train_batches = data_helper.batch_iter(list(zip(x_train, y_train)), params['batch_size'], params['num_epochs'])
-			#test
-			#print (train_batches)
 			best_accuracy, best_at_step = 0, 0
 
 			"""Step 6: train the cnn model with x_train and y_train (batch by batch)"""
@@ -184,5 +141,4 @@ def train_cnn():
 			logging.critical('The training is complete')
 
 if __name__ == '__main__':
-	# python3 train.py ./data/consumer_complaints.csv.zip ./parameters.json
 	train_cnn()
