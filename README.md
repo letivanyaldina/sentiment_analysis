@@ -9,6 +9,9 @@ command for predicting data :
 
 python3 predict.py ./trained_model_1549020657/ ./data/small_samples.json
 
+source : http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow/
+
+
 
 
 
